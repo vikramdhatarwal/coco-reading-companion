@@ -2,8 +2,8 @@
 
 > An intelligent AI-powered interactive storytelling and child learning assistant integrating OCR, Speech Recognition, Large Language Models, and Text-to-Speech on Raspberry Pi.
 
-**📄 Patent Filed** — PDPM IIITDM Jabalpur (April 2026)  
-**🎥 Demo Video** — [Watch on YouTube](#) *(replace with your link)*  
+**📄 Patent Filed** — PDPM IIITDM Jabalpur (May 2026)  
+**🎥 Demo Video** — https://drive.google.com/file/d/16WOyCq2WRZY4sbawVn-ueAsFg3jLp1Nj/view?usp=sharing
 **🔒 Note:** Full source code is withheld pending IP inspection by the institute. This repository contains architecture documentation and system design.
 
 ---
