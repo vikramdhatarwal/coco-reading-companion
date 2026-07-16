@@ -23,10 +23,6 @@ It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
 
 ---
 
-## 🎥 Demo
-
-[![Coco Demo](https://img.shields.io/badge/Demo-Watch%20on%20YouTube-red?style=for-the-badge&logo=youtube)](#)  
-*(replace `#` with your YouTube unlisted link)*
 
 **Features demonstrated in the video:**
 - Live conversational interaction ("Hello, how are you?")
@@ -162,7 +158,7 @@ Core processing runs locally on Raspberry Pi — works without internet for basi
 ## 👨‍💻 Authors
 
 **Vikram Dhatarwal** — B.Tech Smart Manufacturing, PDPM IIITDM Jabalpur  
-[GitHub](https://github.com/vikramdhatarwal) · [LinkedIn](#) *(add your link)*
+[GitHub](https://github.com/vikramdhatarwal) ·
 
 *Built as part of academic research at PDPM IIITDM Jabalpur under the guidance of Dr. Tripti Singh.*
 
