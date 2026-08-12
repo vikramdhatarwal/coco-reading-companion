@@ -2,7 +2,7 @@
 
 > An intelligent AI-powered interactive storytelling and child learning assistant integrating OCR, Speech Recognition, Large Language Models, and Text-to-Speech on Raspberry Pi.
 
-**📄 Patent Filed** — PDPM IIITDM Jabalpur (May 2026)  
+**📄 Patent Filed** — PDPM IIITDM Jabalpur (May 5, 2026)
 **🎥 Demo Video** — https://drive.google.com/file/d/16WOyCq2WRZY4sbawVn-ueAsFg3jLp1Nj/view?usp=sharing
 **🔒 Note:** Full source code is withheld pending IP inspection by the institute. This repository contains architecture documentation and system design.
 
@@ -16,13 +16,11 @@ Coco is a voice-first educational device built for children that can:
 - **Answer children's questions** in real time using conversational AI
 - **Narrate stories in multiple languages** (English + Hindi demonstrated)
 - **Switch between modes** (Storytelling / Narration / Bluetooth) via physical buttons
-- **Filter unsafe content** through child-safe guardrails before responding
-- Allow **parents to manage content** wirelessly via a companion app
+- **Filter unsafe content before it reaches the child** through child-safe guardrails applied ahead of response generation
 
 It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
 
 ---
-
 
 **Features demonstrated in the video:**
 - Live conversational interaction ("Hello, how are you?")
@@ -41,28 +39,25 @@ It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
         ↓
 🔍 OCR Engine (Google Vision API / EasyOCR / Tesseract)
         ↓
-🧹 AI Text Cleaning & Enhancement
+🛡️ Child-Safe Guardrails (TinyLlama Intent Classifier + SHAP Explainability)
         ↓
 🤖 LLM Processing (Gemini 2.5 Flash Lite)
-        ↓
-🛡️ Child-Safe Guardrails (SHAP + TinyLlama Intent Classifier)
         ↓
 🔊 Text-to-Speech (TTS) → Speaker Output
         ↑
 🎙️ Microphone (INMP441) → Speech-to-Text (STT) → Child Voice Input
 ```
 
-### 7-Stage Processing Pipeline
+### 6-Stage Processing Pipeline
 
 | Stage | Module | Function |
 |---|---|---|
 | 1 | Image Acquisition | Pi Camera captures storybook pages |
 | 2 | OCR Processing | Extracts text from captured images |
-| 3 | Text Enhancement | AI cleans and formats OCR output |
-| 4 | Story Narration | TTS converts text to child-friendly audio |
-| 5 | Voice Interaction | STT captures and processes child's voice |
-| 6 | AI Response Generation | Gemini LLM generates contextual answers |
-| 7 | Safety Filtering | Guardrails validate response before playback |
+| 3 | Safety Screening | TinyLlama intent classifier + SHAP explainability validate content before it reaches the LLM |
+| 4 | AI Response Generation | Gemini 2.5 Flash Lite generates contextual answers from screened input |
+| 5 | Story Narration | TTS converts response to child-friendly audio |
+| 6 | Voice Interaction | STT captures and processes child's voice for the next turn |
 
 ---
 
@@ -91,7 +86,7 @@ It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
 | OCR Engine | Google Vision API / EasyOCR / Tesseract |
 | Speech-to-Text | STT Processing Pipeline |
 | Text-to-Speech | TTS Synthesis Engine |
-| Safety Guardrails | SHAP + TinyLlama Intent Classifier |
+| Safety Guardrails | TinyLlama Intent Classifier + SHAP Explainability |
 | Camera Interface | OpenCV (`cv2`), Pi Camera Interface |
 | Operating System | Raspberry Pi OS |
 | Environment Config | `python-dotenv` |
@@ -105,22 +100,17 @@ It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
 Children interact entirely through speech — no typing, no screen dependency. The STT module captures voice input and the TTS module responds in natural audio.
 
 ### 📖 Physical Book Reading
-The Pi Camera captures real storybook pages. OCR extracts the text, AI enhances readability, and TTS narrates it aloud — making any physical book an audiobook instantly.
+The Pi Camera captures real storybook pages. OCR extracts the text, and TTS narrates the screened content aloud — making any physical book an audiobook instantly.
 
-### 🛡️ Child-Safe Guardrails
-Every AI-generated response passes through a two-layer safety system:
-- **Rule-based keyword filtering** for instant unsafe content blocking
+### 🛡️ Child-Safe Guardrails (Input-Side Screening)
+OCR'd text and child voice input pass through a safety layer **before** reaching the LLM:
 - **TinyLlama intent classifier** for contextual safety validation
-- SHAP-based explainability for guardrail decisions
+- **SHAP-based explainability** for guardrail decisions, so flagged inputs can be audited
+
+Only content that clears this screen is sent to Gemini for response generation.
 
 ### 🌐 Multilingual Narration
 Demonstrated with English storybooks and Hindi stories via Bluetooth audio mode.
-
-### 📱 Parent Companion App
-Parents can wirelessly manage story content, monitor usage, download new stories, and adjust interaction settings without touching the device.
-
-### 🔄 Offline Capability
-Core processing runs locally on Raspberry Pi — works without internet for basic narration.
 
 ---
 
@@ -137,7 +127,7 @@ Core processing runs locally on Raspberry Pi — works without internet for basi
 ## 📊 IP & Research
 
 - **Title:** An Audio-First Reading Companion For Children
-- **Filing Status:** Patent Draft Filed — PDPM IIITDM Jabalpur (April 2026)
+- **Filing Status:** Patent Filed — PDPM IIITDM Jabalpur (May 5, 2026)
 - **Technology Domain:** AI, Educational Technology, Speech Processing, Embedded Systems
 - **CPC Classification:** G06F 40/00 | G10L 15/22 | G10L 13/00 | G06V 30/10
 - **Inventors:** Dr. Tripti Singh, Vikram Dhatarwal, Ambuj Gupta, Akshat Neema, Jorige Sriprada, Tanvisha Reddy, Bhavesh Chawre
@@ -157,8 +147,8 @@ Core processing runs locally on Raspberry Pi — works without internet for basi
 
 ## 👨‍💻 Authors
 
-**Vikram Dhatarwal** — B.Tech Smart Manufacturing, PDPM IIITDM Jabalpur  
-[GitHub](https://github.com/vikramdhatarwal) ·
+**Vikram Dhatarwal** — B.Tech Smart Manufacturing, PDPM IIITDM Jabalpur
+[GitHub](https://github.com/vikramdhatarwal)
 
 *Built as part of academic research at PDPM IIITDM Jabalpur under the guidance of Dr. Tripti Singh.*
 
