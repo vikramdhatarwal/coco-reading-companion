@@ -30,6 +30,30 @@ It runs entirely on a **Raspberry Pi 4B** — no screen required for the child.
 
 ---
 
+## Performance Results
+
+### 1. Page-Reading Mode
+
+| Metric |                                                    Result |
+|---|---:|
+| Time to capture photo |                                  3 seconds |
+| Time to first audio |                                 4.79 seconds |
+| Photo capture as a share of total time to first audio |     62.63% |
+| Time from photo capture to narration |                   2 seconds |
+| Full narration completion latency |                   Not measured |
+
+### 2. Live-Interaction Mode
+
+| Metric |                                                    Result |
+|---|---:|
+| User speech duration |                             depends on User |         |
+| Estimated silence detection interval |                 3.7 seconds |
+| Estimated additional response delay |                   ~2 seconds |
+| Estimated post-speech response delay |                 7.5 seconds |
+| Estimated time from listening start to answer |    depends on User |
+| User speech as a share of total time to answer |   depends on User |
+
+
 ## 🏗️ System Architecture
 
 ### End-to-End Pipeline
